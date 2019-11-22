@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h3><span th:text="${session.newd.title}"></span></h3>
+    <img th:if="${session.newd.imgfile} != null" th:src="@{'/img/'+${session.newd.imgfile}}">
+    <p>
+        <span th:text="${session.newd.word}"></span>
+        <span th:text="${session.newd.imgfile}"></span>
+    </p>
+</body>
+</html>

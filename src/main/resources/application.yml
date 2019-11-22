@@ -1,0 +1,25 @@
+server:
+  port: 8080
+#  servlet:
+#    context-path: /boot
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/day2?serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+#  配置访问静态资源路径,如CSS，img
+  resources:
+    static-locations: classpath:static,classpath:templates
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database: MYSQL
+#    database-platform属性可以修改本项目数据库引擎
+
+    thymaleaf:
+      mode: LECACYHTML5
+      cache: false

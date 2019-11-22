@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Checkout example · Bootstrap</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/checkout/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="form-validation.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div th:if="${session.u}!=null">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 order-md-1">
+                <h4 class="mb-3">修改个人信息</h4>
+                <form class="needs-validation" novalidate="" action="/updatauser" method="post">
+                    <div class="mb-3">
+                        <label for="email">账户：</label>
+                        <span th:text="${session.u.id}"></span>
+                        <input type="hidden" name="id" th:value="${session.u.id}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="username">账户昵称</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                            </div>
+                            <input type="text" class="form-control" id="username" name="username" th:value="${session.u.username}" th:placeholder="${session.u.username}" required>
+                            <div class="invalid-feedback" style="width: 100%;">
+                                Your username is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">密码</label>
+                        <input type="password" class="form-control" id="email" name="password" th:value="${session.u.password}" th:placeholder="${session.u.password}" required>
+                        <div class="invalid-feedback">
+                            Please enter a valid email address for shipping updates.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="address">电话号码</label>
+                        <input type="text" class="form-control" id="address" name="phone" th:value="${session.u.username}" th:placeholder="${session.u.username}" required>
+                        <div class="invalid-feedback">
+                            Please enter your shipping address.
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">确定修改</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--<table >-->
+        <!--<tr th:if="${session.u} != null">-->
+            <!--<td >id:<span th:text="${session.u.id}"></span></td>-->
+            <!--<td th:text="${session.u.username}"></td>-->
+            <!--<td th:text="${session.u.password}"></td>-->
+        <!--</tr>-->
+    <!--</table>-->
+</body>
+</html>

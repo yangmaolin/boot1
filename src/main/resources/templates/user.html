@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-size: 100%;text-align: center">
+    <div align="center" style="width: 50%;height: 70%;position:absolute;margin-left: 20%;">
+        <img th:src="@{'/img/'+${session.u.level}+'.PNG'}" style="margin-left: 200px;width: 200px;height: 200px">
+        <ul style="list-style: none;margin-top: 20px;margin-left: 200px;padding:0;text-align: center;">
+            <li style="font-size: 25px">用户账号：<span th:text="${session.u.id}"></span></li>
+            <li style="font-size: 25px">用户名：<span th:text="${session.u.username}"></span></li>
+            <li style="font-size: 25px">用户密码：<span th:text="${session.u.password}"></span></li>
+            <li style="font-size: 25px">用户电话：<span th:text="${session.u.phone}"></span></li>
+            <li style="font-size: 30px">用户级别：
+                <span style="color: #4e555b" th:if="${session.u.level} eq '1'">口high黑铁</span>
+                <span style="color: cadetblue" th:if="${session.u.level} eq '2'">苦逼铂金</span>
+                <span style="color: gold" th:if="${session.u.level} eq '3'">荣耀王者</span>
+            </li>
+        </ul>
+    </div>
+<!--<table >-->
+    <!--<tr th:if="${session.u} != null">-->
+        <!--<td >id:<span th:text="${session.u.id}"></span></td>-->
+        <!--<td th:text="${session.u.username}"></td>-->
+        <!--<td th:text="${session.u.password}"></td>-->
+    <!--</tr>-->
+<!--</table>-->
+</body>
+</html>

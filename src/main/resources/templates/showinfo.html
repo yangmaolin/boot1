@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-size: 100%;text-align: center">
+    <div align="center">
+        用户账号：<span th:text="${session.info.id}"></span><br>
+        账号密码：<span th:text="${session.info.password}"></span><br>
+        <label>请记住你的账号和密码，这是你登陆的凭证</label>
+        <form action="/h">
+            <button type="submit">去登陆</button>
+        </form>
+    </div>
+</body>
+</html>

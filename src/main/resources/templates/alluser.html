@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        table{
+            border: solid 2px red;
+        }
+        tr{
+            border: solid 2px red;
+        }
+        td{
+            border: solid 2px red;
+        }
+    </style>
+</head>
+<body style="background-size: 100%">
+    <h3>用户信息</h3>
+    <div>
+        <table>
+            <tr>
+                <td>用户账号</td>
+                <td>用户昵称</td>
+                <td>用户联系方式</td>
+                <td>操作</td>
+            </tr>
+            <tr th:each="c, results : ${session.results}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.username}"></td>
+                <td th:text="${c.phone}"></td>
+                <td>
+                    <form action="/upuserlevel">
+                        <input type="hidden" name="id" th:value="${c.id}">
+                        <button>升vip</button>
+                    </form>
+                    <form action="/deluser">
+                        <input type="hidden" name="id" th:value="${c.id}">
+                        <button>删除</button>
+                    </form>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <form action="/toalluser" th:if="${session.page != 1}">
+            <input type="hidden" name="page" th:value="${session.page-1}">
+            <button type="submit">上一页</button>
+        </form>
+        第<span th:text="${session.page}"></span>页
+        <form action="/toalluser" th:if="${session.results!=null}">
+            <input type="hidden" name="page" th:value="${session.page+1}">
+            <button type="submit">下一页</button>
+        </form>
+    </div>
+</body>
+</html>
